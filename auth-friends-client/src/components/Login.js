@@ -2,7 +2,7 @@ import axios from 'axios';
 import React,{ useState } from 'react';
 
 
-export default function Login() {
+export default function Login(props) {
     const [signIn, setSignIn]=useState({username:'',password:''})
     const handleChange=(e)=>{
         setSignIn({
@@ -16,15 +16,20 @@ export default function Login() {
             .then((res)=>{
                 console.log(res.data)
                 localStorage.setItem('token', res.data.payload)
+                props.history.push('/protected')
             })
             .catch(err=>console.log(err))
+
     }
+   
 
     return (
         <div>
+            <h2>login</h2>
             <input type='text' name='username' placeholder='username' onChange={handleChange} value={signIn.username}></input>
             <input type='password' name='password' placeholder='password' onChange={handleChange} value={signIn.password}></input>
             <button onClick={handleSubmit}>Sign In</button>
+           
         </div>
     )
 }
