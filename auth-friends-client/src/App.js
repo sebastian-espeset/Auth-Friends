@@ -1,22 +1,17 @@
+import Login from './components/Login';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 
 
-//want to test the server, see if I can store the token correctly....
+//want to test the server, see if I can store the token correctly....Test passed, server working correctly
 
 
 
 
 function App() {
- axiosWithAuth().get("http://localhost:5000/api/friends")
-  .then((res)=>{
-    console.log(res)
-  })
-  .catch((err)=>{
-    console.log(err)
-  })
   return (
     <div >
-      <h1>Hello world</h1>
+      <h1>Friends with Authorization app</h1>
+      <Login/>
     </div>
   );
 }
